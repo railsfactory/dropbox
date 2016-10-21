@@ -5,5 +5,5 @@ class Gallery < ApplicationRecord
   scope :all_folders, ->(user_id, type) { where(:user_id => user_id, :type => type) }
 
   validates_attachment :asset, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-
+  has_paper_trail
 end
