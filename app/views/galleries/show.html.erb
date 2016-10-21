@@ -1,0 +1,14 @@
+<%= image_tag(@gallery.asset)%>
+<h4> Comments </h4>
+<div class="comments">
+	<%= render partial: 'comments/comments', locals: { comments: @gallery.comments } %>
+</div>
+<%= form_for @gallery.comments.new, html: { class: "form-horizontal" }, remote: true do |f| %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    	<%= hidden_field_tag :gallery_id, @gallery.id %>
+	    <%= f.text_area :comment %>
+	    <%= f.submit 'Comment', :class => 'btn btn-inverse btn-primary', disable_with: "Submitting..." %>
+	  </div>
+</div>
+<% end %>

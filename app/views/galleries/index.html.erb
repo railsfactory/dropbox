@@ -14,7 +14,7 @@
     <tr>
       <td><%= gallery.name %></td>
       <td><%= gallery.asset.url %></td>
-      <td><%= link_to 'Show', "", class: "btn-link" %></td>
+      <td><%= link_to 'Show', gallery_path(gallery), class: "btn-link" %></td>
       <td><%= link_to 'Edit', "", class: "btn-link" %></td>
       <td><%= link_to 'Delete', "", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
     </tr>

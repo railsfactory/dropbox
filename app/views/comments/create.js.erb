@@ -1,0 +1,2 @@
+$(".comments").html("<%= escape_javascript(render partial: 'comments/comments', locals: { comments: @gallery.comments })%>");
+$("#comment_comment").val('');
