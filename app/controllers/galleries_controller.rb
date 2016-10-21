@@ -62,8 +62,7 @@ class GalleriesController < ApplicationController
   end
 
   def delete_items
-    galleries = Gallery.where(:id => params[:ids])
-
+    galleries = Gallery.where(:id => params[:gallery_ids])
     if(Gallery.count > 0)
       galleries.delete_all
     end

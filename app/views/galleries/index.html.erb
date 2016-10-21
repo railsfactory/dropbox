@@ -34,17 +34,26 @@
 </table>
 <thead>
   <tr>
-    <th> <button type="button" id="delete_galleries" class="btn btn-info">Delete selected</button> </th>
+    <th>
+    <%= form_tag '/galleries/delete_items/',  { :method => "post", :onsubmit => "return updateSelectedItems()" } do %>
+        <%= hidden_field_tag "gallery_ids" %>
+        <button type="submit" id="delete_galleries" class="btn btn-info">Delete selected</button>
+      <!-- </form> -->
+      <% end %>
+    </th>
   </tr>
 </thead>
 
-| <%= link_to 'Back', galleries_path, class: "btn btn-info pull-right" %>
+<br>
+<br>
+<div class="row">
+  <%= link_to 'Back', galleries_path, class: "btn btn-info pull-right" %>
 
-<!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
+  <!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
 
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create Folder/File</button>
-
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create Folder/File</button>
+</div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -65,3 +74,7 @@
 
   </div>
 </div>
+
+<script type="text/javascript">
+
+</script>
