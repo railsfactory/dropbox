@@ -4,12 +4,7 @@ class GalleryFoldersController < ApplicationController
 
   # GET /galleries
   def index
-    @galleries = Gallery.all #current_user.galleries
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @galleries }
-    end
+    redirect_to galleries_path
   end
 
   # GET /galleries/1
@@ -26,10 +21,9 @@ class GalleryFoldersController < ApplicationController
   # POST /galleries
   def create
     @gallery = Gallery.new(gallery_params)
-    # file = File.open("/images/folder.png")
-    # @gallery.attachment = file
+
     if @gallery.save
-      render json: @gallery, status: :created, location: @gallery
+      redirect_to galleries_path
     else
       render json: @gallery.errors, status: :unprocessable_entity
     end
@@ -57,6 +51,6 @@ class GalleryFoldersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gallery_params
-      params.require(:gallery_folder).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position)
+      params.require(:gallery_folder).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :user_id)
     end
 end
