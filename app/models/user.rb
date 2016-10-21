@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :galleries
 
   def name
-  	return first_name+" "+last_name
+  	return (first_name && last_name) ? first_name+" "+last_name : email
   end
 end
