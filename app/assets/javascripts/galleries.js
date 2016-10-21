@@ -7,19 +7,17 @@ $(document).ready(function(){
     }
   })
 
-  $("#delete_galleries").click(function(){
-    var ids = []
+});
+
+function updateSelectedItems(){
+  var ids = []
     $.each($("input[type=checkbox]:checked"),function(c){
       ids.push($(this).attr('id').split("select_")[1])
     });
     if(ids.length > 0){
-      $.ajax({
-        url: '/galleries/delete_items/' + ids,
-        type: 'DELETE',
-        success: function(result) {
-           location.reload();
-        }
-      });
+      $("#gallery_ids").val(ids)
+      return true;
+    }else{
+      return false;
     }
-  })
-});
+}

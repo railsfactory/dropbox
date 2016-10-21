@@ -32,7 +32,7 @@ class GalleryFoldersController < ApplicationController
   # PATCH/PUT /galleries/1
   def update
     if @gallery.update(gallery_params)
-      render json: @gallery
+      redirect_to galleries_path
     else
       render json: @gallery.errors, status: :unprocessable_entity
     end
