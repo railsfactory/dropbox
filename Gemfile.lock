@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/railsfactory-sivamanikandan/survey.git
+  revision: a55a54cfeb40656af6f41f37c9736e43c7ac645d
+  specs:
+    survey (0.1)
+      rails (>= 3.2.6, <= 5.0.0.1)
+      railties (>= 3.2.6, <= 5.0.0.1)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: d3776ddd0b89d28fdebfd6e1c1541348cc90e5cc
   specs:
@@ -7,14 +15,6 @@ GIT
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-
-GIT
-  remote: git@github.com:railsfactory-sivamanikandan/survey.git
-  revision: a55a54cfeb40656af6f41f37c9736e43c7ac645d
-  specs:
-    survey (0.1)
-      rails (>= 3.2.6, <= 5.0.0.1)
-      railties (>= 3.2.6, <= 5.0.0.1)
 
 GEM
   remote: https://rubygems.org/
