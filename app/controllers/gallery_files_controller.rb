@@ -4,12 +4,7 @@ class GalleryFilesController < ApplicationController
 
   # GET /galleries
   def index
-    @galleries = Gallery.all #current_user.galleries
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @galleries }
-    end
+    redirect_to galleries_path
   end
 
   # GET /galleries/1
@@ -27,11 +22,17 @@ class GalleryFilesController < ApplicationController
   def create
     @gallery = Gallery.new(gallery_params)
 
-    if @gallery.save
-      render json: @gallery, status: :created, location: @gallery
-    else
-      render json: @gallery.errors, status: :unprocessable_entity
+    respond_to do |format|
+
+      if (@gallery.save)
+        format.html { redirect_to galleries_path, success: 'Email template was successfully created.' }
+        format.json { render json: @gallery, status: :created, location: @email_template }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @gallery.errors, status: 300 }
+      end
     end
+
   end
 
   # PATCH/PUT /galleries/1
@@ -56,6 +57,6 @@ class GalleryFilesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gallery_params
-      params.require(:gallery_file).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :asset)
+      params.require(:gallery_file).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :asset, :user_id)
     end
 end
