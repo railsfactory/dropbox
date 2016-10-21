@@ -1,4 +1,5 @@
 class QuestionnairesController < ApplicationController
+  before_filter :authenticated_user
   before_filter :load_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def index
