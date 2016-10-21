@@ -4,12 +4,16 @@ class GalleriesController < ApplicationController
 
   # GET /galleries
   def index
-    @galleries = current_user.galleries
+    @galleries = current_user.galleries.where(type: "GalleryFolder")
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @galleries }
     end
+  end
+
+  def content
+    @galleries = Gallery.where(parent_id: params[:parent_id])
   end
 
   # GET /galleries/1
@@ -45,7 +49,7 @@ class GalleriesController < ApplicationController
 
   # DELETE /galleries/1
   def destroy
-    @gallery.destroy
+    @gallery.delete
     redirect_to galleries_path
   end
 
@@ -57,6 +61,6 @@ class GalleriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gallery_params
-      params.require(:gallery).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :user_id)
+      params.require(:gallery).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :asset, :user_id)
     end
 end

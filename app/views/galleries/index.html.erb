@@ -14,7 +14,7 @@
   <% @galleries.each do |gallery| %>
     <tr>
       <td><%= gallery.name %></td>
-      <td><%= gallery.asset.url %></td>
+      <td><a href="<%= "/galleries/content/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a></td>
       <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
       <td><%= link_to 'Edit', "/galleries/#{gallery.id}", class: "btn-link" %></td>
       <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
@@ -25,7 +25,7 @@
 </table>
 
 <br />
-<%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %>
+<!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
 
 <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Create Folder/File</button>
@@ -38,10 +38,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">New Gallery</h4>
       </div>
       <div class="modal-body">
-        <h1 class="underline" class="underline">New Gallery</h1>
         <%= render 'form' %>
       </div>
       <div class="modal-footer">
