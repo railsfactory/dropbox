@@ -4,7 +4,6 @@
 <table class="table table-hover">
 <thead>
   <tr>
-    <th></th>
     <th>Name</th>
     <th>Description</th>
     <th colspan="3">Action</th>
@@ -14,17 +13,9 @@
 <tbody>
   <% @galleries.each do |gallery| %>
     <tr>
-      <td><%= check_box_tag "select_#{gallery.id}" %></td>
       <td><%= gallery.name %></td>
-      <td>
-
-<% if gallery.type == "GalleryFolder" %>
-  <a href="<%= "/galleries/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a>
-  <% else %>
-  <%= image_tag(gallery.asset.url(:thumb)) %>
-  <% end %>
-  </a></td>
-      <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
+      <td><a href="<%= "/galleries/content/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a></td>
+      <td><%= link_to 'Show', show_gallery_path(gallery), class: "btn-link" %></td>
       <td><%= link_to 'Edit', "/galleries/#{gallery.id}/edit", class: "btn-link" %></td>
       <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
     </tr>
@@ -32,18 +23,12 @@
 
 </tbody>
 </table>
-<thead>
-  <tr>
-    <th> <button type="button" id="delete_galleries" class="btn btn-info">Delete selected</button> </th>
-  </tr>
-</thead>
 
-| <%= link_to 'Back', galleries_path, class: "btn btn-info pull-right" %>
-
+<br />
 <!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create Folder/File</button>
+<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Create Folder/File</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
