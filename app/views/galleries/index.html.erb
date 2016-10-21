@@ -1,3 +1,4 @@
+<%= javascript_include_tag "galleries" %>
 <h1 class="underline">Listing Galleries</h1>
 
 <table class="table table-hover">
@@ -13,10 +14,10 @@
   <% @galleries.each do |gallery| %>
     <tr>
       <td><%= gallery.name %></td>
-      <td><%= gallery.asset.url %></td>
-      <td><%= link_to 'Show', gallery_path(gallery), class: "btn-link" %></td>
-      <td><%= link_to 'Edit', "", class: "btn-link" %></td>
-      <td><%= link_to 'Delete', "", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
+      <td><a href="<%= "/galleries/content/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a></td>
+      <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
+      <td><%= link_to 'Edit', "/galleries/#{gallery.id}/edit", class: "btn-link" %></td>
+      <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
     </tr>
   <% end %>
 
@@ -24,4 +25,28 @@
 </table>
 
 <br />
-<%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %>
+<!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Create Folder/File</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Gallery</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -48,3 +48,5 @@ gem 'devise_invitable', '~> 1.7.0'
 gem 'devise-bootstrap-views', '0.0.9'
 # Comments
 gem 'acts_as_commentable'
+
+gem 'paper_trail'

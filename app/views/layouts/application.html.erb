@@ -45,12 +45,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">DropBox</a>
+        <a class="navbar-brand " href="#">DropBox</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+          <ul class="nav navbar-nav navbar-right" >
+            <% if user_signed_in? %>
+              <li><%= link_to "Welcome #{current_user.email}", "#"%></li>
+              <li><%= link_to "Signout", destroy_user_session_path, method: "delete"  %></li> 
+            <%else%>
+              <li><%= link_to "Sign In", new_user_session_path%></li>
+              <li><%= link_to "Sign Up", new_user_registration_path%></li>
+            <%end%>
           </ul>
         </div>
       </div>
