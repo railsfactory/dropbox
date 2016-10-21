@@ -15,6 +15,25 @@ ActiveRecord::Schema.define(version: 20161021064805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "name"
+    t.boolean  "visible"
+    t.string   "icon_url"
+    t.string   "url"
+    t.string   "mime_type"
+    t.string   "name_search"
+    t.integer  "position"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
