@@ -3,7 +3,7 @@ $(document).ready(function(){
     if($(this).val() == "GalleryFolder"){
       $("#filebrowser").hide()
     }else{
-      $("#fileborwser").show()
+      $("#filebrowser").show()
     }
   })
 
