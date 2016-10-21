@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :gallery_files
   resources :gallery_folders
   resources :galleries
+  resource 'questionnaires'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
