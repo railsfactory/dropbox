@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  
+
   before_action :authenticate_user!
   before_action :set_gallery, only: [:show, :update, :destroy]
   before_action :set_paper_trail_whodunnit
@@ -47,7 +47,7 @@ class GalleriesController < ApplicationController
     if @gallery.save
       redirect_to galleries_path
     else
-      render json: @gallery.errors, status: :unprocessable_entity
+        render :action => "new"
     end
   end
 
@@ -56,7 +56,7 @@ class GalleriesController < ApplicationController
     if @gallery.update(gallery_params)
       redirect_to galleries_path
     else
-      render json: @gallery.errors, status: :unprocessable_entity
+      render :action => "edit"
     end
   end
 
@@ -67,7 +67,7 @@ class GalleriesController < ApplicationController
   end
 
   def delete_items
-    galleries = Gallery.where(:id => params[:gallery_ids])
+    galleries = Gallery.where(:id => params[:gallery_ids].split(","))
     if(Gallery.count > 0)
       galleries.delete_all
     end

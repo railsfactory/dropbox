@@ -3,7 +3,7 @@
   <div class="form-group">
     <%= label_tag "Parent", nil, class: "control-label col-sm-2" %>
     <div class="col-sm-8">
-      <%= f.select :parent_id, options_for_select(Gallery.all_folders(current_user.id, "GalleryFolder").map{|g| [g.name, g.id]}), class: "form-control"%>
+      <%= f.select :parent_id, options_for_select(Gallery.all_folders(current_user.id, "GalleryFolder").map{|g| [g.name, g.id]}), class: "form-control", prompt: true%>
     </div>
   </div>
 
