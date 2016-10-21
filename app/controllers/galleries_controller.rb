@@ -21,7 +21,7 @@ class GalleriesController < ApplicationController
   end
 
   def edit
-    @gallery = Gallery.where(parent_id: params[:parent_id])
+    @gallery = Gallery.find(params[:id])
   end
 
   # GET /galleries/1
@@ -58,6 +58,15 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   def destroy
     @gallery.delete
+    redirect_to galleries_path
+  end
+
+  def delete_items
+    galleries = Gallery.where(:id => params[:ids])
+
+    if(Gallery.count > 0)
+      galleries.delete_all
+    end
     redirect_to galleries_path
   end
 

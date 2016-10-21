@@ -4,6 +4,7 @@
 <table class="table table-hover">
 <thead>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Description</th>
     <th colspan="3">Action</th>
@@ -13,6 +14,7 @@
 <tbody>
   <% @galleries.each do |gallery| %>
     <tr>
+      <td><%= check_box_tag "select_#{gallery.id}" %></td>
       <td><%= gallery.name %></td>
       <td>
 
@@ -30,15 +32,18 @@
 
 </tbody>
 </table>
+<thead>
+  <tr>
+    <th> <button type="button" id="delete_galleries" class="btn btn-info">Delete selected</button> </th>
+  </tr>
+</thead>
 
-<br />
-<td><%= link_to 'Back', galleries_path, class: "btn-link" %></td>
-<br />
+| <%= link_to 'Back', galleries_path, class: "btn btn-info pull-right" %>
 
 <!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Create Folder/File</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Create Folder/File</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
