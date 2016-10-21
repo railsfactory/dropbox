@@ -16,7 +16,7 @@
       <td><%= gallery.name %></td>
       <td><a href="<%= "/galleries/content/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a></td>
       <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
-      <td><%= link_to 'Edit', "/galleries/#{gallery.id}", class: "btn-link" %></td>
+      <td><%= link_to 'Edit', "/galleries/#{gallery.id}/edit", class: "btn-link" %></td>
       <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
     </tr>
   <% end %>
