@@ -2,14 +2,22 @@ module QuestionnairesHelper
 
   def questionnaire_path(resource)
     if action_name =~ /new|create/
-      questionnaires_path(resource)
+      create_questionnaire_path(resource)
     elsif action_name =~ /edit|update/
-      questionnaire_path(resource)
+      update_questionnaire_path(resource)
     end
   end
 
   def is_score? something
     something == 1 || something == 'score'
+  end
+
+  def number_of_questions survey
+    survey.questions.count
+  end
+
+  def number_of_attempts survey
+    survey.attempts.count
   end
 
   def link_to_remove_field(name, f)
