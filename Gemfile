@@ -32,6 +32,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'jquery-rails'
+gem 'sass-rails', '>= 3.2'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
