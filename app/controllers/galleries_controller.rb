@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   
-  before_filter :authenticated_user
+  before_action :authenticate_user!
   before_action :set_gallery, only: [:show, :update, :destroy]
   before_action :set_paper_trail_whodunnit
 
