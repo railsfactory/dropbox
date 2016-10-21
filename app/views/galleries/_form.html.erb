@@ -1,20 +1,28 @@
 
-<%= form_for @gallery, html: { class: "form-horizontal" } do |f| %>
-  <% if f.object.class == GalleryFile  %>
-  <div class="form-group required">
-    <%= label_tag "Choose Parent Folder", nil, class: "control-label col-sm-2" %>
+<%= form_for (@gallery || Gallery.new), html: { class: "form-horizontal" } do |f| %>
+
+  <div class="form-group">
+    <%= label_tag "Parent", nil, class: "control-label col-sm-2" %>
     <div class="col-sm-8">
       <%= f.select :parent_id, options_for_select(Gallery.all_folders(current_user.id, "GalleryFolder").map{|g| [g.name, g.id]}), class: "form-control", prompt: true %>
     </div>
   </div>
-  <div class="form-group required">
-    <%= label_tag "Choose Parent Folder", nil, class: "control-label col-sm-2" %>
+
+  <div class="form-group">
+    <%= label_tag "Type", nil, class: "control-label col-sm-2" %>
+    <div class="col-sm-8">
+       <%= f.select :type, options_for_select([["Folder", "GalleryFolder"], ["File", "GalleryFile"]]), class: "form-control", prompt: true %>
+    </div>
+  </div>
+
+  <div class="form-group" id="fileborwser">
+    <%= label_tag "Choose File", nil, class: "control-label col-sm-2" %>
     <div class="col-sm-8">
       <%= f.file_field :asset %>
     </div>
   </div>
-  <% end %>
-  <div class="form-group required">
+
+  <div class="form-group">
     <%= label_tag "Name", nil, class: "control-label col-sm-2" %>
     <div class="col-sm-8">
       <%= f.text_field :name %>
