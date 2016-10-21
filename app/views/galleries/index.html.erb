@@ -15,9 +15,9 @@
     <tr>
       <td><%= gallery.name %></td>
       <td><%= gallery.asset.url %></td>
-      <td><%= link_to 'Show', "", class: "btn-link" %></td>
-      <td><%= link_to 'Edit', "", class: "btn-link" %></td>
-      <td><%= link_to 'Delete', "", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
+      <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
+      <td><%= link_to 'Edit', "/galleries/#{gallery.id}", class: "btn-link" %></td>
+      <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
     </tr>
   <% end %>
 
@@ -28,7 +28,7 @@
 <%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %>
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Create Folder/File</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">

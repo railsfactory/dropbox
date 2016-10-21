@@ -28,7 +28,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new(gallery_params)
 
     if @gallery.save
-      render json: @gallery, status: :created, location: @gallery
+      redirect_to galleries_path
     else
       render json: @gallery.errors, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class GalleriesController < ApplicationController
   # PATCH/PUT /galleries/1
   def update
     if @gallery.update(gallery_params)
-      render json: @gallery
+      redirect_to galleries_path
     else
       render json: @gallery.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,7 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   def destroy
     @gallery.destroy
+    redirect_to galleries_path
   end
 
   private
@@ -56,6 +57,6 @@ class GalleriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gallery_params
-      params.require(:gallery).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position)
+      params.require(:gallery).permit(:parent_id, :type, :name, :visible, :icon_url, :url, :mime_type, :name_search, :position, :user_id)
     end
 end

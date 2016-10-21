@@ -31,7 +31,6 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <%= f.hidden_field :type %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit 'Save', :class => 'btn btn-inverse btn-primary', disable_with: "Submitting..." %>
   </div>
