@@ -14,7 +14,14 @@
   <% @galleries.each do |gallery| %>
     <tr>
       <td><%= gallery.name %></td>
-      <td><a href="<%= "/galleries/content/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a></td>
+      <td>
+
+<% if gallery.type == "GalleryFolder" %>
+  <a href="<%= "/galleries/#{gallery.id}" %>"><%= image_tag(gallery.asset.url(:thumb)) %></a>
+  <% else %>
+  <%= image_tag(gallery.asset.url(:thumb)) %>
+  <% end %>
+  </a></td>
       <td><%= link_to 'Show', "/galleries/#{gallery.id}", class: "btn-link" %></td>
       <td><%= link_to 'Edit', "/galleries/#{gallery.id}/edit", class: "btn-link" %></td>
       <td><%= link_to 'Delete', "/galleries/#{gallery.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-link" %></td>
@@ -25,6 +32,9 @@
 </table>
 
 <br />
+<td><%= link_to 'Back', galleries_path, class: "btn-link" %></td>
+<br />
+
 <!-- <#%= link_to 'New File', new_gallery_type_path({type: "GalleryFile"}), class: "btn-link" %> | <#%= link_to 'New Folder', new_gallery_type_path({type: "GalleryFolder"}), class: "btn-link" %> -->
 
 <!-- Trigger the modal with a button -->

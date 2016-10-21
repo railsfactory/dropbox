@@ -4,7 +4,11 @@ class GalleriesController < ApplicationController
 
   # GET /galleries
   def index
-    @galleries = current_user.galleries.where(type: "GalleryFolder")
+    @galleries = if params[:parent_id]
+      Gallery.where(parent_id: params[:parent_id])
+    else
+    current_user.galleries
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,10 @@ class GalleriesController < ApplicationController
 
   def content
     @galleries = Gallery.where(parent_id: params[:parent_id])
+  end
+
+  def edit
+    @gallery = Gallery.where(parent_id: params[:parent_id])
   end
 
   # GET /galleries/1
