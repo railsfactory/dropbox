@@ -1,0 +1,19 @@
+<tr class="survey">
+  <td class="table-center"> <%#= render 'survey_label', survey_type: questionnaire.survey_type %> </td>
+  <td> <%= link_to questionnaire.name, new_exams_path(questionnaire_id: questionnaire.id), class: 'survey-name' %> </td>
+  <td> <span class="survey-description"> <%= "#{questionnaire.description}" %> </span> </td>
+  <td class="table-center"> <%= number_of_questions(questionnaire) %> </td>
+  <td class="table-center"> <%= number_of_attempts(questionnaire) %> </td>
+
+  <td class="table-center survey-buttons">
+    <div class="btn-group" role="group">
+      <%= link_to edit_questionnaire_path(questionnaire), class: 'btn btn-default btn-sm' do %>
+        <i class="fa fa-pencil-square-o"> Edit</i>
+      <% end %>
+
+      <%= link_to delete_questionnaire_path(questionnaire), class: 'btn btn-default btn-sm', method: :delete, data: {confirm: "Are you sure you want to delete this questionnaire?"} do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </div>
+  </td>
+</tr>

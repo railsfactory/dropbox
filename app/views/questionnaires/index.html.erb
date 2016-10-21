@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="questionnaires_<%= action_name %>">
+    <h1>
+      Surveys
+    </h1>
+    <%= link_to "New", new_questionnaires_path %>
+    <hr>
+    <% if @questionnaires.empty? %>
+      <p> There are no questionnaires </p>
+    <% else %>
+      <p>
+        Filter by type:
+        <%#= render 'survey_label_all' %>
+        <%#= render partial: 'survey_label', collection: get_survey_types.keys, as: :survey_type, locals: { with_badges: true } %>
+      </p>
+      <table class='table table-nonfluid survey-table'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Questions</th>
+            <th>Participants</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'questionnaire', collection: @questionnaires %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

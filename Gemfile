@@ -46,5 +46,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'devise', '~> 4.2'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'devise-bootstrap-views', '0.0.9'
-
 gem 'paper_trail'
+gem "survey", git: 'git@github.com:railsfactory-sivamanikandan/survey.git'
+gem 'jquery-rails'
