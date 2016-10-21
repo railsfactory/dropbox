@@ -50,3 +50,5 @@ gem 'devise-bootstrap-views', '0.0.9'
 gem 'acts_as_commentable'
 
 gem 'paper_trail'
+gem "survey", git: 'git@github.com:railsfactory-sivamanikandan/survey.git'
+gem 'jquery-rails'

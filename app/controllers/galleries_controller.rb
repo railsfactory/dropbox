@@ -6,7 +6,11 @@ class GalleriesController < ApplicationController
 
   # GET /galleries
   def index
-    @galleries = current_user.galleries.where(type: "GalleryFolder")
+    @galleries = if params[:parent_id]
+      Gallery.where(parent_id: params[:parent_id])
+    else
+    current_user.galleries
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +20,10 @@ class GalleriesController < ApplicationController
 
   def content
     @galleries = Gallery.where(parent_id: params[:parent_id])
+  end
+
+  def edit
+    @gallery = Gallery.find(params[:id])
   end
 
   # GET /galleries/1
@@ -55,6 +63,15 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   def destroy
     @gallery.delete
+    redirect_to galleries_path
+  end
+
+  def delete_items
+    galleries = Gallery.where(:id => params[:ids])
+
+    if(Gallery.count > 0)
+      galleries.delete_all
+    end
     redirect_to galleries_path
   end
 
