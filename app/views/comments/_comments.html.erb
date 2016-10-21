@@ -1,0 +1,4 @@
+<% @gallery.comments.each do |comment| %>
+	<b><%= comment.user.name %></b> says <br>
+	<p><%= comment.comment %></p>
+<% end %>

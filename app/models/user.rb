@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :galleries
+
+  def name
+  	return first_name+" "+last_name
+  end
 end
