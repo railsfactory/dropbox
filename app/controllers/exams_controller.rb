@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-  before_filter :authenticated_user
+  before_filter :authenticate_user!
   before_filter :load_questionnaire, only: [:new, :create]
 
   def index
